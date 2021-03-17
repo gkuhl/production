@@ -1,0 +1,24 @@
+# File modified by MaKra - August 2017 (CSCS); adapted by @omlins (09.2018)
+easyblock = 'ConfigureMake'
+
+name = 'grib_api'
+version = '1.28.0'
+
+homepage = 'https://software.ecmwf.int/wiki/display/GRIB/Home'
+description = """The ECMWF GRIB API is an application program interface accessible from C, FORTRAN and Python
+ programs developed for encoding and decoding WMO FM-92 GRIB edition 1 and edition 2 messages. A useful set of
+ command line tools is also provided to give quick access to GRIB messages."""
+
+toolchain = {'name': 'CrayGNU', 'version': '20.08'}
+
+sources = ['/users/shenne/software/grib_api-1.28.0-Source.tar.gz']
+
+dependencies = [
+    ('JasPer', '1.900.1'), #2.x doesn't work (at least 2.0.14 doesn't)
+]
+
+configopts = '--with-jasper=$EBROOTJASPER'
+
+parallel = 1
+
+moduleclass = 'data'
